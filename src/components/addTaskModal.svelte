@@ -1,23 +1,29 @@
 <script lang="ts">
+	import { format } from 'date-fns';
 	import { tasks } from '../stores';
 
 	export let open: boolean, closeModal: () => void;
 
 	let title: string,
-		description: string = '';
+		description: string = '',
+		taskDate = format(new Date(), 'Y-M-d');
 
 	const onSubmitHandler = () => {
 		tasks.addTask({
 			id: crypto.randomUUID(),
 			title,
-			description
+			description,
+			task_date: taskDate
 		});
 
 		title = '';
 		description = '';
+		taskDate = format(new Date(), 'Y-M-d');
 
 		closeModal();
 	};
+
+	$: console.log(taskDate);
 </script>
 
 {#if open}
@@ -37,11 +43,15 @@
 
 		<div class=" p-5 pb-8 space-y-4">
 			<div>
-				<label for="title" class="text-sm font-semibold mb-1.5 block text-content2">
+				<label
+					for="title"
+					class="text-sm font-semibold mb-1.5 block text-content2"
+				>
 					Task title
 				</label>
 
 				<input
+					autofocus
 					name="title"
 					class="input input-sm input-ghost-primary text-content1"
 					placeholder="Enter task title"
@@ -51,7 +61,10 @@
 			</div>
 
 			<div>
-				<label for="description" class="text-sm font-semibold mb-1.5 block text-content2">
+				<label
+					for="description"
+					class="text-sm font-semibold mb-1.5 block text-content2"
+				>
 					Task Description
 				</label>
 
@@ -63,7 +76,19 @@
 				/>
 			</div>
 
-			<input class="input" type="date" />
+			<div>
+				<label
+					for="task_date"
+					class="text-sm font-semibold mb-1.5 block text-content2"
+					>Task Date</label
+				>
+				<input
+					name="task_date"
+					class="input input-sm"
+					type="date"
+					bind:value={taskDate}
+				/>
+			</div>
 		</div>
 
 		<div class="px-5 py-3 flex justify-end">

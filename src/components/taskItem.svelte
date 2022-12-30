@@ -5,9 +5,7 @@
 	export let task: ITask;
 </script>
 
-<li
-	class="bg-backgroundSecondary px-4 py-3 rounded-lg border-2 relative"
->
+<li class="bg-backgroundSecondary px-4 py-3 rounded-lg border-2 relative">
 	<h3 class="text-md font-semibold text-content2">
 		{task.title}
 	</h3>
