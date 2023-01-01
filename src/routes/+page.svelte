@@ -16,18 +16,23 @@
 	);
 </script>
 
-<main class="p-6 bg-backgroundPrimary h-screen w-screen relative flex flex-col">
+<main
+	class="p-6 bg-base-100 max-h-screen  h-screen w-screen relative flex flex-col"
+>
 	<h1 class="text-3xl font-semibold mb-4 text-content1">Weekly Planer</h1>
 
 	<div class="flex justify-between mb-4 items-end">
 		<WeeklyRange {weekOffset} setOffset={(val) => (weekOffset = val)} />
 
-		<button class="btn font-semibold " on:click={() => (showModal = true)}
-			>+ Add task</button
+		<button
+			class="btn btn-primary btn-outline"
+			on:click={() => (showModal = true)}>+ Add task</button
 		>
 	</div>
 
-	<div class="grid border rounded-lg grid-cols-7 flex-grow">
+	<div
+		class="grid border divide-x border-neutral divide-neutral rounded-lg grid-cols-7 flex-grow max-h-full overflow-scroll"
+	>
 		{#each weekDays as day (day)}
 			<TasksList date={day}>
 				<TaskItem let:task {task} slot="task-item" />

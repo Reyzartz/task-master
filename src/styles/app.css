@@ -1,12 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom Styles */
-.btn {
-	border-radius: 6px;
-}
-
-.input {
-	border-radius: 8px;
-}
