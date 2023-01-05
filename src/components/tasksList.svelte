@@ -1,10 +1,5 @@
 <script lang="ts">
-	import {
-		differenceInDays,
-		format,
-		isSameDay,
-		isToday as isTodayFn
-	} from 'date-fns';
+	import { format, isSameDay, isToday as isTodayFn } from 'date-fns';
 	import { tasks } from '../stores';
 
 	export let date: Date;
